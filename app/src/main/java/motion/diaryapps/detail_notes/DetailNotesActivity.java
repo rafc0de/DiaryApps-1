@@ -24,15 +24,15 @@ import motion.diaryapps.utils.Tools;
  */
 public class DetailNotesActivity extends AppCompatActivity {
 
-//    constant value
+    //    constant value
     private static final String KEY_ID = "id";
 
-//    layout component
+    //    layout component
     private ImageView mIvDetailNotes;
     private TextView mTvDetailNotesTitle;
     private TextView mTvDetailNotesDescription;
 
-//    attribute
+    //    attribute
     private DiaryDao mData;
 
     @Override
@@ -56,7 +56,7 @@ public class DetailNotesActivity extends AppCompatActivity {
                 "1",
                 "Lost Paradise",
                 "Lorem ipsum simdolor amet",
-                "https://t-ec.bstatic.com/images/hotel/max1024x768/136/136201154.jpg",
+                "https://media-cdn.tripadvisor.com/media/photo-w/11/60/c2/a8/photo6jpg.jpg",
                 Tools.getCurrentDateISO8601());
     }
 

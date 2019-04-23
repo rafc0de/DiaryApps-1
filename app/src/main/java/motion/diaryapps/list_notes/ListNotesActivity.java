@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,8 +39,9 @@ public class ListNotesActivity extends AppCompatActivity {
         initToolbar();
 
         // TODO: 4/12/19 panggil initRecyclerView() disini
-
+        initRecyclerView();
         // TODO: 4/12/19 panggil initDummy() disini
+        initDummy();
     }
 
     /**
@@ -48,7 +50,7 @@ public class ListNotesActivity extends AppCompatActivity {
     public void initToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Diary Apps");
+        getSupportActionBar().setTitle("My Diary");
     }
 
     /**
@@ -57,15 +59,13 @@ public class ListNotesActivity extends AppCompatActivity {
     public void initRecyclerView() {
         // TODO: 4/12/19 -> ganti null dengan component RecyclerView pada activity_list_notes
         // hint: gunakan findViewById(R.id.xxxxx);
-        mRecyclerView = null;
+        mRecyclerView = findViewById(R.id.rvListNotes);
 
         // TODO: 4/12/19 -> ganti null dengan objek ListNotesAdapter
-        mAdapter = null;
+        mAdapter = new ListNotesAdapter(mLists, this);
 
         // TODO: 4/12/19 -> ganti null dengan objek LinearLayoutManager
-        mLayoutManager = null;
-
-
+        mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
     }
@@ -77,9 +77,12 @@ public class ListNotesActivity extends AppCompatActivity {
         // TODO: 4/12/19 -> lengkapi parameter untuk ListNotesModel disini
         // hint: lakukan setelah menambahkan constructor pada ListNotesModel
         // untuk date gunakan Tools.getCurrentDateISO8601()
-
-        mLists.add(new ListNotesModel());
-
+        String date = Tools.getCurrentDateISO8601();
+        mLists.add(new ListNotesModel("1","https://media-cdn.tripadvisor.com/media/photo-w/11/60/c2/a8/photo6jpg.jpg","Paradise Lost",date));
+        mLists.add(new ListNotesModel("2","https://media-cdn.tripadvisor.com/media/photo-w/11/60/c2/a8/photo6jpg.jpg", "Paradise Lost",date));
+        mLists.add(new ListNotesModel("3","https://media-cdn.tripadvisor.com/media/photo-w/11/60/c2/a8/photo6jpg.jpg", "Paradise Lost",date));
+        mLists.add(new ListNotesModel("4","https://media-cdn.tripadvisor.com/media/photo-w/11/60/c2/a8/photo6jpg.jpg", "Paradise Lost",date));
+        mLists.add(new ListNotesModel("5","https://media-cdn.tripadvisor.com/media/photo-w/11/60/c2/a8/photo6jpg.jpg", "Paradise Lost",date));
         mAdapter.notifyDataSetChanged();
     }
 
